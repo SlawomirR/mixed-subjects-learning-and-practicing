@@ -1,23 +1,24 @@
+package data;
+
 public class Point {
     private int partX;
     private int partY;
 
-    protected int getPartX() {
+    public int getPartX() {
         return partX;
     }
-    protected int getPartY() {
+    public int getPartY() {
         return partY;
     }
 
-    protected void setPartX(int partX) {
+    public void setPartX(int partX) {
         this.partX = partX;
     }
-    protected void setPartY(int partY) {
+    public void setPartY(int partY) {
         this.partY = partY;
     }
 
-    Point() {}
-    Point(int partX, int partY) {
+    public Point(int partX, int partY) {
         this.partX = partX;
         this.partY = partY;
 

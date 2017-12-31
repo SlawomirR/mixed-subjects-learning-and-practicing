@@ -1,14 +1,18 @@
+package logic;
+
+import data.Point;
+
 public class PointController {
-    void addX(Point point) {
+    public void addX(Point point) {
         point.setPartX(point.getPartX() + 1);
     }
-    void minusX(Point point) {
+    public void minusX(Point point) {
         point.setPartX(point.getPartX() - 1);
     }
-    void addY(Point point) {
+    public void addY(Point point) {
         point.setPartY(point.getPartY() + 1);
     }
-    void minusY(Point point) {
+    public void minusY(Point point) {
         point.setPartY(point.getPartY() - 1);
     }
 }

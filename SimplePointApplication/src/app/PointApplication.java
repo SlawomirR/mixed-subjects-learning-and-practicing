@@ -1,3 +1,8 @@
+package app;
+
+import data.Point;
+import logic.PointController;
+
 public class PointApplication {
     public static void main(String[] args) {
         int pointX = 4;
