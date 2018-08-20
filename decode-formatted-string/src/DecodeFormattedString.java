@@ -17,7 +17,7 @@ public class DecodeFormattedString {
         System.out.println("===> Zadanie 2: " + decode(STRING_TO_DECODE).toString());
     }
 
-    static Map<String, String> decode(String s) {
+    private static Map<String, String> decode(String s) {
         Map<String, String> stringMap = new HashMap<>();
         if (s == null) {
             return null;
