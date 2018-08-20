@@ -13,8 +13,8 @@ public class IsArrayContainingSubarray {
 
         int[] array = {3, 4, 5, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] subArray = {3, 4, 5};
-        System.out.println("===> Zadanie 1: " + subarrayInArray.findArray(array, subArray));
 
+        System.out.println("===> Zadanie 1: " + subarrayInArray.findArray(array, subArray));
     }
 
     private int findArray(int[] array, int[] subArray) {
