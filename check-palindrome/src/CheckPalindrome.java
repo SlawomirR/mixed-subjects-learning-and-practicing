@@ -13,7 +13,6 @@ public class CheckPalindrome {
     }
 
     private static boolean isPalindrome(String textToCheck) {
-        StringBuilder stringBuilder = new StringBuilder(textToCheck);
-        return textToCheck.toLowerCase().equals(stringBuilder.reverse().toString().toLowerCase());
+        return textToCheck.toLowerCase().equals((new StringBuilder(textToCheck)).reverse().toString().toLowerCase());
     }
 }
