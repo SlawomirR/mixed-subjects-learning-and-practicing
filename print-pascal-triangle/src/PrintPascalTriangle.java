@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class PrintPascalTriangle {
 
@@ -17,11 +15,7 @@ public class PrintPascalTriangle {
             }
             int value = 1;
             for (int k = 0; k <= i; k++) {
-                String numberString = IntStream
-                        .range(0, (longestValue(row) - String.valueOf(value).length()))
-                        .mapToObj(e -> " ")
-                        .collect(Collectors.joining(""));
-                System.out.print(" " + (value + numberString));
+                System.out.printf("%-" + (longestValue(row) + 1) + "d", value);
                 value = value * (i - k) / (k + 1);
             }
             System.out.println();
