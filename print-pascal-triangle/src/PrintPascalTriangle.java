@@ -1,10 +1,11 @@
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PrintPascalTriangle {
 
     public static void main(String[] args) {
         int row;
-        String emptyString = "         ";
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("How many rows of Pascal's Triangle would you like to print?: ");
@@ -16,7 +17,11 @@ public class PrintPascalTriangle {
             }
             int value = 1;
             for (int k = 0; k <= i; k++) {
-                System.out.print(" " + (String.valueOf(value) + emptyString).substring(0, longestValue(row)));
+                String numberString = IntStream
+                        .range(0, (longestValue(row) - String.valueOf(value).length()))
+                        .mapToObj(e -> " ")
+                        .collect(Collectors.joining(""));
+                System.out.print(" " + (value + numberString));
                 value = value * (i - k) / (k + 1);
             }
             System.out.println();
