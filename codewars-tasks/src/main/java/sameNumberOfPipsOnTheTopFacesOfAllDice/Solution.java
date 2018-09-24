@@ -1,4 +1,4 @@
-package same_number_of_pips_on_the_top_faces_of_all_dice;
+package sameNumberOfPipsOnTheTopFacesOfAllDice;
 
 public class Solution {
 
