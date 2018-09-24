@@ -1,3 +1,5 @@
+package same_number_of_pips_on_the_top_faces_of_all_dice;
+
 public class Solution {
 
     public static void main(String[] args) {
