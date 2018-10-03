@@ -3,13 +3,14 @@ package playlist_for_songs_app;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Main {
 
     private static List<Album> albums = new ArrayList<>();
 
     public static void main(String[] args) {
+        Utils utils = new Utils();
+
         Album album = new Album("First Album", "First Artist");
         album.addSong("TitleA1S1", 2.34);
         album.addSong("TitleA1S2", 1.43);
@@ -38,15 +39,6 @@ public class Main {
         albums.get(1).addToPlaylist(2, playlist);
         albums.get(1).addToPlaylist(24, playlist); // There is no such track
 
-        play(playlist);
-    }
-
-    private static void play(List<Song> playlist) {
-        ListIterator<Song> listIterator = playlist.listIterator();
-        if (playlist.size() == 0) {
-            System.out.println("No songs in playlist");
-        } else {
-            System.out.println("Now playing " + listIterator.next());
-        }
+        utils.play(playlist);
     }
 }

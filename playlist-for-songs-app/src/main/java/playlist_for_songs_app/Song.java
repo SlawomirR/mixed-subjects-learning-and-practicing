@@ -1,16 +1,16 @@
 package playlist_for_songs_app;
 
-public class Song {
+public final class Song {
 
-    private String title;
-    private double duration;
+    private final String title;
+    private final double duration;
 
-    public Song(String title, double duration) {
+    Song(String title, double duration) {
         this.title = title;
         this.duration = duration;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
