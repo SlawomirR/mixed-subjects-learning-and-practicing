@@ -16,9 +16,14 @@ public class Main {
         saveObject(tim);
         loadObject(tim);
         System.out.println(tim);
+
+        Savable werewolf = new Monster("Werewolf", 20, 40);
+        System.out.println(werewolf);
+        System.out.println(((Monster) werewolf).getStrength());
+        saveObject(werewolf);
     }
 
-    public static ArrayList<String> readValues() {
+    private static ArrayList<String> readValues() {
         ArrayList<String> values = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
@@ -47,13 +52,13 @@ public class Main {
         return values;
     }
 
-    public static void saveObject(Savable objectToSave) {
+    private static void saveObject(Savable objectToSave) {
         for (int i = 0; i < objectToSave.write().size(); i++) {
             System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
         }
     }
 
-    public static void loadObject(Savable objectToLoad) {
+    private static void loadObject(Savable objectToLoad) {
         ArrayList<String> values = readValues();
         objectToLoad.read(values);
     }
