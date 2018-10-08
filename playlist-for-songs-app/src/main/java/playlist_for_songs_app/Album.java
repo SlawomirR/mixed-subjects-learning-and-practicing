@@ -7,26 +7,22 @@ class Album {
 
     private String albumName;
     private String artist;
-    private List<Song> songs;
+    private SongList songs;
 
     Album(String albumName, String artist) {
         this.albumName = albumName;
         this.artist = artist;
-        this.songs = new ArrayList<>();
+        this.songs = new SongList();
     }
 
     boolean addSong(String title, double duration) {
-        if (findSong(title) == null) {
-            this.songs.add(new Song(title, duration));
-            return true;
-        }
-        return false;
+        return this.songs.add(new Song(title, duration));
     }
 
     boolean addToPlaylist(int trackNumber, List<Song> playlist) {
-        int index = trackNumber - 1;
-        if (index >= 0 && index <= this.songs.size()) {
-            playlist.add(this.songs.get(index));
+        Song checkedSong = this.songs.findSong(trackNumber);
+        if (checkedSong != null) {
+            playlist.add(checkedSong);
             return true;
         }
         System.out.println("This album does not have a track " + trackNumber);
@@ -34,7 +30,7 @@ class Album {
     }
 
     boolean addToPlaylist(String title, List<Song> playlist) {
-        Song checkedSong = findSong(title);
+        Song checkedSong = this.songs.findSong(title);
         if (checkedSong != null) {
             playlist.add(checkedSong);
             return true;
@@ -42,12 +38,37 @@ class Album {
         System.out.println("The song " + title + " is not in this album");
         return false;
     }
+}
 
-    private Song findSong(String title) {
+class SongList {
+
+    private List<Song> songs;
+
+    SongList() {
+        this.songs = new ArrayList<>();
+    }
+
+    boolean add(Song song) {
+        if (songs.contains(song)) {
+            return false;
+        }
+        this.songs.add(song);
+        return true;
+    }
+
+    Song findSong(String title) {
         for (Song checkedSong : this.songs) {
             if (checkedSong.getTitle().equals(title)) {
                 return checkedSong;
             }
+        }
+        return null;
+    }
+
+    Song findSong(int trackNumber) {
+        int index = trackNumber - 1;
+        if ((index >= 0) && (index < songs.size())) {
+            return songs.get(index);
         }
         return null;
     }
