@@ -53,13 +53,27 @@ public class Main {
         //
         // Hint: to avoid typing loads of "addItem" lines, split a string into an array and create your list in
         // a loop as in the example below.
-        //
+
+        MyLinkedList list = new MyLinkedList(null);
+        list.traverse(list.getRoot());
+
         // Create a string data array to avoid typing loads of addItem instructions:
         String stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Sydney Canberra";
 
         String[] data = stringData.split(" ");
         for (String s : data) {
-            // implement it
+            list.addItem(new Node(s));
         }
+        list.traverse(list.getRoot());
+
+        System.out.println("===============");
+        MyLinkedList list1 = new MyLinkedList(null);
+        String stringData1 = "5 7 3 9 8 2 1 0 4 6";
+
+        String[] data1 = stringData1.split(" ");
+        for (String s : data1) {
+            list1.addItem(new Node(s));
+        }
+        list1.traverse(list1.getRoot());
     }
 }
