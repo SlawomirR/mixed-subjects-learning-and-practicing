@@ -75,5 +75,27 @@ public class Main {
             list1.addItem(new Node(s));
         }
         list1.traverse(list1.getRoot());
+        list1.removeItem(new Node("3"));
+        list1.traverse(list1.getRoot());
+
+        list1.removeItem(new Node("5"));
+        list1.traverse(list1.getRoot());
+
+        list1.removeItem(new Node("0"));
+        list1.removeItem(new Node("4"));
+        list1.removeItem(new Node("2"));
+        list1.traverse(list1.getRoot());
+
+        list1.removeItem(new Node("9"));
+        list1.traverse(list1.getRoot());
+        list1.removeItem(new Node("8"));
+        list1.traverse(list1.getRoot());
+        list1.removeItem(new Node("6"));
+        list1.traverse(list1.getRoot());
+
+        list1.removeItem(list1.getRoot());
+        list1.traverse(list1.getRoot());
+        list1.removeItem(list1.getRoot());
+        list1.traverse(list1.getRoot());
     }
 }
