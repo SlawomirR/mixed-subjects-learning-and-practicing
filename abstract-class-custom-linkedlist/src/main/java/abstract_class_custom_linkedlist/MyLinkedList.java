@@ -2,9 +2,9 @@ package abstract_class_custom_linkedlist;
 
 public class MyLinkedList implements NodeList {
 
-    private ListItem root = null;
+    private ListItem root;
 
-    public MyLinkedList(ListItem root) {
+    MyLinkedList(ListItem root) {
         this.root = root;
     }
 

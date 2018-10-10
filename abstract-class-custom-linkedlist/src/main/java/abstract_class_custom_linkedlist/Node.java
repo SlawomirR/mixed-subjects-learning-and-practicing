@@ -1,8 +1,8 @@
 package abstract_class_custom_linkedlist;
 
-public class Node extends ListItem {
+class Node extends ListItem {
 
-    public Node(Object value) {
+    Node(Object value) {
         super(value);
     }
 

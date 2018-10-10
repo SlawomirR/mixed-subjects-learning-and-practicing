@@ -97,5 +97,50 @@ public class Main {
         list1.traverse(list1.getRoot());
         list1.removeItem(list1.getRoot());
         list1.traverse(list1.getRoot());
+
+        System.out.println("===============");
+        System.out.println("===============");
+
+        SearchTree tree = new SearchTree(null);
+        tree.traverse(tree.getRoot());
+
+        stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Sydney Canberra";
+
+        String[] data2 = stringData.split(" ");
+        for (String s : data2) {
+            tree.addItem(new Node(s));
+        }
+        tree.traverse(tree.getRoot());
+        System.out.println("===============");
+        MyLinkedList tree1 = new MyLinkedList(null);
+        String stringData3 = "5 7 3 9 8 2 1 0 4 6";
+
+        String[] data3 = stringData3.split(" ");
+        for (String s : data3) {
+            tree1.addItem(new Node(s));
+        }
+        tree1.traverse(tree1.getRoot());
+        tree1.removeItem(new Node("3"));
+        tree1.traverse(tree1.getRoot());
+
+        tree1.removeItem(new Node("5"));
+        tree1.traverse(tree1.getRoot());
+
+        tree1.removeItem(new Node("0"));
+        tree1.removeItem(new Node("4"));
+        tree1.removeItem(new Node("2"));
+        tree1.traverse(tree1.getRoot());
+
+        tree1.removeItem(new Node("9"));
+        tree1.traverse(tree1.getRoot());
+        tree1.removeItem(new Node("8"));
+        tree1.traverse(tree1.getRoot());
+        tree1.removeItem(new Node("6"));
+        tree1.traverse(tree1.getRoot());
+
+        tree1.removeItem(tree1.getRoot());
+        tree1.traverse(tree1.getRoot());
+        tree1.removeItem(tree1.getRoot());
+        tree1.traverse(tree1.getRoot());
     }
 }

@@ -1,13 +1,13 @@
 package abstract_class_custom_linkedlist;
 
-public abstract class ListItem {
+abstract class ListItem {
 
-    protected ListItem rightLink = null;
-    protected ListItem leftLink = null;
+    ListItem rightLink = null;
+    ListItem leftLink = null;
 
-    protected Object value;
+    private Object value;
 
-    public ListItem(Object value) {
+    ListItem(Object value) {
         this.value = value;
     }
 
@@ -21,11 +21,11 @@ public abstract class ListItem {
 
     abstract int compareTo(ListItem item);
 
-    public Object getValue() {
+    Object getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    void setValue(Object value) {
         this.value = value;
     }
 }
