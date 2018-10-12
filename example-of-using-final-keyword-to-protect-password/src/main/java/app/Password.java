@@ -1,6 +1,6 @@
 package app;
 
-public class Password {
+public final class Password {
 
     private static final int KEY = 1_748_576_362;
     private final int encryptedPassword;
@@ -13,11 +13,11 @@ public class Password {
         return password ^ KEY;
     }
 
-    public void storePassword() {
+    public final void storePassword() {
         System.out.println("Saving password as " + this.encryptedPassword);
     }
 
-    public boolean letMeIn(int givenPassword) {
+    public final boolean letMeIn(int givenPassword) {
         if (encryptDecrypt(givenPassword) == this.encryptedPassword) {
             System.out.println("Welcome, your password is correct");
             return true;
