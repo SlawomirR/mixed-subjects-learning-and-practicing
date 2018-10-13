@@ -3,6 +3,7 @@ package io.github.slawomirr.producer_consumer_demo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static io.github.slawomirr.ThreadColorIntellijConsole.*;
@@ -15,13 +16,32 @@ public class Main {
     public static void main(String[] args) {
         List<String> buffer = new ArrayList<>();
         ReentrantLock bufferLock = new ReentrantLock();
+        ExecutorService executorService = Executors.newFixedThreadPool(3); // should be 4 to print future.get() immediately
         MyProducer producer = new MyProducer(buffer, ANSI_YELLOW, bufferLock);
         MyConsumer consumer1 = new MyConsumer(buffer, ANSI_PURPLE, bufferLock);
         MyConsumer consumer2 = new MyConsumer(buffer, ANSI_CYAN, bufferLock);
 
-        new Thread(producer).start();
-        new Thread(consumer1).start();
-        new Thread(consumer2).start();
+        executorService.execute(producer);
+        executorService.execute(consumer1);
+        executorService.execute(consumer2);
+
+        Future<String> future = executorService.submit(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println(ANSI_WHITE + "I'm being printed from the Callable class.");
+                return "This is the callable result.";
+            }
+        });
+
+        try {
+            System.out.println(future.get());
+        } catch (ExecutionException e) {
+            System.out.println(ANSI_RED + "Something went wrong");
+        } catch (InterruptedException e) {
+            System.out.println(ANSI_RED + "Thread running the task was interrupted");
+        }
+
+        executorService.shutdown();
     }
 }
 
