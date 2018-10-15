@@ -1,6 +1,6 @@
 package findMaxAndMinInStringNumbers;
 
-public class findMaxAndMinInStringNumbers {
+public class FindMaxAndMinInStringNumbers {
 
     public static void main(String[] args) {
         System.out.println(highAndLow("4 18 5 2 -9 -3 6 -1 0"));

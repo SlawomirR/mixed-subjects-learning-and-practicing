@@ -22,8 +22,8 @@ public class Monster implements Savable {
     public void read(List<String> savedValues) {
         if (savedValues != null && savedValues.size() > 0) {
             this.monsterName = savedValues.get(0);
-            this.hitPoints = Integer.valueOf(savedValues.get(1));
-            this.strength = Integer.valueOf(savedValues.get(2));
+            this.hitPoints = Integer.parseInt(savedValues.get(1), 10);
+            this.strength = Integer.parseInt(savedValues.get(2), 10);
         }
     }
 

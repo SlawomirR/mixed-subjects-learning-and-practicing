@@ -1,6 +1,5 @@
 package io.github.slawomirr.producer_consumer_demo;
 
-import java.util.Random;
 import java.util.concurrent.*;
 
 import static io.github.slawomirr.ThreadColorIntellijConsole.*;
@@ -23,7 +22,7 @@ public class Main {
 
         Future<String> future = executorService.submit(new Callable<String>() {
             @Override
-            public String call() throws Exception {
+            public String call() {
                 System.out.println(ANSI_WHITE + "I'm being printed from the Callable class.");
                 return "This is the callable result.";
             }
@@ -53,7 +52,6 @@ class MyProducer implements Runnable {
 
     @Override
     public void run() {
-        Random random = new Random();
         String[] nums = {"1", "2", "3", "4", "5"};
 
         for (String num : nums) {
@@ -86,8 +84,6 @@ class MyConsumer implements Runnable {
 
     @Override
     public void run() {
-        int counter = 0;
-
         while (true) {
             synchronized (buffer) {
                 try {

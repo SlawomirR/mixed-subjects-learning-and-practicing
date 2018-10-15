@@ -3,13 +3,13 @@ package tripleTrouble;
 public class TripleDouble {
 
     public static void main(String[] args) {
-        System.out.println(TripleDouble(451999277, 41177722899L) == 1 ? "OK" : "ERROR");
-        System.out.println(TripleDouble(1222345, 12345) == 0 ? "OK" : "ERROR");
-        System.out.println(TripleDouble(12345, 12345) == 0 ? "OK" : "ERROR");
-        System.out.println(TripleDouble(666789, 12345667) == 1 ? "OK" : "ERROR");
+        System.out.println(tripleDouble(451999277, 41177722899L) == 1 ? "OK" : "ERROR");
+        System.out.println(tripleDouble(1222345, 12345) == 0 ? "OK" : "ERROR");
+        System.out.println(tripleDouble(12345, 12345) == 0 ? "OK" : "ERROR");
+        System.out.println(tripleDouble(666789, 12345667) == 1 ? "OK" : "ERROR");
     }
 
-    public static int TripleDouble(long num1, long num2) {
+    public static int tripleDouble(long num1, long num2) {
         String num1Str = String.valueOf(num1);
         String num2Str = String.valueOf(num2);
         for (int i = 0; i < 10; i++) {
