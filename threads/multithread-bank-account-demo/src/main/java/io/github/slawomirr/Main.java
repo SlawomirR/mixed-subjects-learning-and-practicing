@@ -31,12 +31,11 @@ public class Main {
             public void run() {
                 System.out.print(ANSI_GREEN + "P1_D: " + "start balance: " + account.getBalance());
                 account.deposit(personOneDeposit);
-                System.out.println(ANSI_GREEN + " D1=> " + personOneDeposit + " end balance: " + account.getBalance()
-                );
+                System.out.println(ANSI_GREEN + " D1=> " + personOneDeposit + " end balance: " + account.getBalance());
+
                 System.out.print(ANSI_GREEN + "P1_W: " + "start balance: " + account.getBalance());
                 account.withdraw(personOneWithdraw);
-                System.out.println(ANSI_GREEN + " W1<= " + personOneWithdraw + " end balance: " + account.getBalance()
-                );
+                System.out.println(ANSI_GREEN + " W1<= " + personOneWithdraw + " end balance: " + account.getBalance());
             }
         };
         t1.setName("Thread of person One");
@@ -46,12 +45,11 @@ public class Main {
             public void run() {
                 System.out.print(ANSI_PURPLE + "P2_D: " + "start balance: " + account.getBalance());
                 account.deposit(personTwoDeposit);
-                System.out.println(ANSI_PURPLE + " D2=>: " + personTwoDeposit + " end balance: " + account.getBalance()
-                );
+                System.out.println(ANSI_PURPLE + " D2=>: " + personTwoDeposit + " end balance: " + account.getBalance());
+
                 System.out.print(ANSI_PURPLE + "P2_W: " + "start balance: " + account.getBalance());
                 account.withdraw(personTwoWithdraw);
-                System.out.println(ANSI_PURPLE + " W2<= " + personTwoWithdraw + " end balance: " + account.getBalance()
-                );
+                System.out.println(ANSI_PURPLE + " W2<= " + personTwoWithdraw + " end balance: " + account.getBalance());
             }
         };
         t2.setName("Thread of person Two");

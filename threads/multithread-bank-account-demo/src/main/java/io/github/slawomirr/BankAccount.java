@@ -1,13 +1,19 @@
 package io.github.slawomirr;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 class BankAccount {
 
+    private Lock lock;
     private double balance;
     private String accountNumber;
 
     public BankAccount(String accountNumber, double initialBalance) {
         this.accountNumber = accountNumber;
         this.balance = initialBalance;
+        this.lock = new ReentrantLock();
     }
 
 //    public synchronized void deposit(double amount) {
@@ -19,14 +25,30 @@ class BankAccount {
 //    }
 
     public void deposit(double amount) {
-        synchronized (this) {
-            balance += amount;
+        try {
+            if (lock.tryLock(1_000, TimeUnit.MILLISECONDS)) {
+                try {
+                    balance += amount;
+                } finally {
+                    lock.unlock();
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println(Main.ANSI_RED + "Could not get the lock! (deposit)");
         }
     }
 
     public void withdraw(double amount) {
-        synchronized (this) {
-            balance -= amount;
+        try {
+            if (lock.tryLock(1_000, TimeUnit.MILLISECONDS)) {
+                try {
+                    balance -= amount;
+                } finally {
+                    lock.unlock();
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println(Main.ANSI_RED + "Could not get the lock! (withdraw)");
         }
     }
 
