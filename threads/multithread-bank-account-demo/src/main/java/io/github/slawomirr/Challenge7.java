@@ -34,7 +34,7 @@ class NewBankAccount {
                 } catch (InterruptedException e) {
                 }
                 balance -= amount;
-                System.out.printf("%s: Withdrew %f\n", Thread.currentThread().getName(), amount);
+                System.out.printf("%s: Withdrew %f%n", Thread.currentThread().getName(), amount);
                 return true;
             } finally {
                 lock.unlock();
@@ -52,7 +52,7 @@ class NewBankAccount {
                 } catch (InterruptedException e) {
                 }
                 balance += amount;
-                System.out.printf("%s: Deposited %f\n", Thread.currentThread().getName(), amount);
+                System.out.printf("%s: Deposited %f%n", Thread.currentThread().getName(), amount);
                 return true;
             } finally {
                 lock.unlock();
@@ -67,7 +67,7 @@ class NewBankAccount {
                 return true;
             } else {
                 // The deposit failed. Refund the money back into the account.
-                System.out.printf("%s: Destination account busy. Refunding money\n",
+                System.out.printf("%s: Destination account busy. Refunding money%n",
                         Thread.currentThread().getName());
                 deposit(amount);
             }
@@ -90,6 +90,6 @@ class Transfer implements Runnable {
     public void run() {
         while (!sourceAccount.transfer(destinationAccount, amount))
             continue;
-        System.out.printf("%s completed\n", Thread.currentThread().getName());
+        System.out.printf("%s completed%n", Thread.currentThread().getName());
     }
 }

@@ -7,19 +7,11 @@ public class Challenge9 {
         final NewStudent student = new NewStudent(tutor);
         tutor.setStudent(student);
 
-        Thread tutorThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                tutor.studyTime();
-            }
-        });
+        Thread tutorThread = new Thread(tutor::studyTime);
+        tutorThread.setName("tutorThread");
 
-        Thread studentThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                student.handInAssignment();
-            }
-        });
+        Thread studentThread = new Thread(student::handInAssignment);
+        studentThread.setName("studentThread");
 
         tutorThread.start();
         studentThread.start();
@@ -27,55 +19,59 @@ public class Challenge9 {
 }
 
 class NewTutor {
-    private NewStudent student;
 
-    public void setStudent(NewStudent student) {
+    private NewStudent student;
+    private boolean isStudentArrived = false;
+
+    synchronized void setStudent(final NewStudent student) {
         this.student = student;
     }
 
-    public void studyTime() {
-
+    void studyTime() {
+        System.out.println("Tutor has arrived");
         synchronized (this) {
-            System.out.println("Tutor has arrived");
-            synchronized (student) {
+            while (!isStudentArrived) {
                 try {
                     // wait for student to arrive
                     this.wait();
                 } catch (InterruptedException e) {
 
                 }
-                student.startStudy();
-                System.out.println("Tutor is studying with student");
             }
+            student.startStudy();
+            System.out.println("Tutor is studying with student");
         }
     }
 
-    public void getProgressReport() {
+    void getProgressReport() {
         // get progress report
         System.out.println("Tutor gave progress report");
+    }
+
+    synchronized void setStudentArrived(boolean studentArrived) {
+        isStudentArrived = studentArrived;
     }
 }
 
 class NewStudent {
 
-    private NewTutor tutor;
+    private final NewTutor tutor;
 
     NewStudent(NewTutor tutor) {
         this.tutor = tutor;
     }
 
-    public void startStudy() {
+    void startStudy() {
         // study
         System.out.println("Student is studying");
     }
 
-    public void handInAssignment() {
+    void handInAssignment() {
+        tutor.getProgressReport();
         synchronized (tutor) {
-            tutor.getProgressReport();
-            synchronized (this) {
-                System.out.println("Student handed in assignment");
-                tutor.notifyAll();
-            }
+            System.out.println("Student handed in assignment");
+            tutor.setStudentArrived(true);
+            tutor.notifyAll();
         }
     }
 }
