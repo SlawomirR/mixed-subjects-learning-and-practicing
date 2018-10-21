@@ -31,8 +31,8 @@ public class Player implements Savable {
     public void read(List<String> savedValues) {
         if (savedValues != null && savedValues.size() > 0) {
             this.playerName = savedValues.get(0);
-            this.hitPoints = Integer.valueOf(savedValues.get(1));
-            this.strength = Integer.valueOf(savedValues.get(2));
+            this.hitPoints = Integer.parseInt(savedValues.get(1));
+            this.strength = Integer.parseInt(savedValues.get(2));
             this.playerWeapon = savedValues.get(3);
         }
     }
