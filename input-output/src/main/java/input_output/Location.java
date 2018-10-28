@@ -1,9 +1,12 @@
 package input_output;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-class Location {
+class Location implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
