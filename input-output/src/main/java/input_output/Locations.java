@@ -10,8 +10,10 @@ public class Locations implements Map<Integer, Location> {
 
     private static final String DATA_FILE = "input-output/locations.dat";
     private static Map<Integer, Location> locations = new LinkedHashMap<>();
+    private static boolean isRead = false;
 
     public static void main(String[] args) throws IOException {
+        if (isRead) {
 //        try (
 //                DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(DATA_FILE)))
 //        ) {
@@ -30,12 +32,15 @@ public class Locations implements Map<Integer, Location> {
 //                }
 //            }
 //        }
-        try (
-                ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(DATA_FILE)))
-        ) {
-            for (Location location : locations.values()) {
-                locFile.writeObject(location);
+            try (
+                    ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(DATA_FILE)))
+            ) {
+                for (Location location : locations.values()) {
+                    locFile.writeObject(location);
+                }
             }
+        } else {
+            System.out.println("File didn't read properly so writing is blocked!");
         }
     }
 
@@ -55,6 +60,7 @@ public class Locations implements Map<Integer, Location> {
                     eof = true;
                 }
             }
+            isRead = true;
         } catch (IOException io) {
             System.out.println("IO Exception " + io.getMessage());
         } catch (ClassNotFoundException e) {
@@ -82,6 +88,7 @@ public class Locations implements Map<Integer, Location> {
 //                    eof = true;
 //                }
 //            }
+//            isRead = true;
 //        } catch (IOException io) {
 //            System.out.println("IO Exception occurred.");
 //        }
@@ -116,6 +123,7 @@ public class Locations implements Map<Integer, Location> {
 //                Location location = locations.get(loc);
 //                location.addExit(directions, destination);
 //            }
+//            isRead = true;
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
