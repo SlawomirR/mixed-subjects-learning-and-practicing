@@ -1,19 +1,12 @@
 package wycash_multicurrency_demo;
 
-class Franc {
+class Franc extends Money {
 
-    private int amount;
-
-    Franc(int amount) {
-        this.amount = amount;
+    Franc(int amount, String currency) {
+        super(amount, currency);
     }
 
-    Franc times(int multiplier) {
-        return new Franc(amount * multiplier);
-    }
-
-    public boolean equals(Object object) {
-        Franc dollar = (Franc) object;
-        return amount == dollar.amount;
+    Money times(int multiplier) {
+        return Money.franc(amount * multiplier);
     }
 }
