@@ -1,6 +1,6 @@
 package wycash_multicurrency_demo;
 
-abstract class Money {
+class Money {
 
     protected int amount;
     protected String currency;
@@ -20,12 +20,22 @@ abstract class Money {
 
     public boolean equals(Object object) {
         Money money = (Money) object;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && currency.equals(money.currency);
     }
 
-    abstract Money times(int amount);
+    Money times(int amount) {
+        return null;
+    }
 
     String currency() {
         return currency;
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }
