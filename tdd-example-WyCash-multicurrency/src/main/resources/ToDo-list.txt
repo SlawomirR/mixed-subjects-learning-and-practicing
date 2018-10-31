@@ -2,10 +2,10 @@ To do:
 ======
 + $5 + 10 CHF = $10 if CHF:$ is 2:1
 + $5 + $5 = $10
-- Return Money from $5 + $5
++ Return Money from $5 + $5
 + Bank.reduce(Money)
 + Reduce Money with conversion
-- Reduce(Bank, String) vs reduce(String)
++ Reduce(Bank, String) vs reduce(String)
 + Expression.plus
 + Sum.plus
 + Expression.times
